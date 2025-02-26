@@ -1,5 +1,6 @@
 import React from 'react';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Outlet } from 'react-router';
 
 const { Header, Content, Footer } = Layout;
 const items = Array.from({ length: 3 }).map((_, index) => ({
@@ -7,7 +8,7 @@ const items = Array.from({ length: 3 }).map((_, index) => ({
     label: `nav ${index + 1}`,
   }));
 
-const Admin:React.FC=()=> {
+const AdminLayout:React.FC=()=> {
     const {
         token: { colorBgContainer, borderRadiusLG },
       } = theme.useToken();
@@ -46,7 +47,7 @@ const Admin:React.FC=()=> {
           borderRadius: borderRadiusLG,
         }}
       >
-        Content
+        <Outlet/>
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>
@@ -56,4 +57,4 @@ const Admin:React.FC=()=> {
   )
 }
 
-export default Admin
+export default AdminLayout;
