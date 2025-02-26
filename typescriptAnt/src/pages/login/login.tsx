@@ -1,8 +1,8 @@
 
-import React from 'react';
 import type { FormProps } from 'antd';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, message } from 'antd';
 import Cards from '../../components/Cards'
+import { useNavigate } from 'react-router';
 
 type FieldType = {
   username?: string;
@@ -10,15 +10,31 @@ type FieldType = {
   remember?: string;
 };
 
-const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-  console.log('Success:', values);
-};
+
 
 const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
 
-const Login: React.FC = () => (
+const Login = () => {
+const navigate=useNavigate();
+const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+    //if the user inputs admin details
+    if(values.username === 'admin' && values.password === 'admin'){
+        localStorage.setItem('auth_token','dummy_token_admin')
+        localStorage.setItem('user_role','admin')
+        message.success('Login successful!');
+        navigate('/admin')
+    }else if(values.username === 'client' && values.password === 'client'){ //if the user inputs admin details
+        localStorage.setItem('auth_token','dummy_token_client')
+        localStorage.setItem('user_role','client')
+        message.success('Login successful!');
+        navigate('/client')
+    }else{
+        message.error('Invalid credentials')
+    }
+    // console.log('Success:', values);
+  };
 <Cards>
   <Form
     name="basic"
@@ -26,7 +42,7 @@ const Login: React.FC = () => (
     wrapperCol={{ span: 16 }}
     style={{ maxWidth: 600 }}
     initialValues={{ remember: true }}
-    onFinish={onFinish}
+    onFinish={onFinish}//dont really under stand is it like form submit ?
     onFinishFailed={onFinishFailed}
     autoComplete="off"
     >
@@ -35,7 +51,9 @@ const Login: React.FC = () => (
       name="username"
       rules={[{ required: true, message: 'Please input your username!' }]}
       >
-      <Input />
+      <Input 
+      placeholder='Username(client/admin)'
+      />
     </Form.Item>
 
     <Form.Item<FieldType>
@@ -52,11 +70,11 @@ const Login: React.FC = () => (
 
     <Form.Item label={null}>
       <Button type="primary" htmlType="submit">
-        Submit
+        Login
       </Button>
     </Form.Item>
   </Form>
     </Cards>
-);
+};
 
 export default Login;
