@@ -1,4 +1,3 @@
-About Page
 import { Typography,Space } from 'antd';
 const { Title, Paragraph } = Typography;
 const AboutPage = () => {
