@@ -1,58 +1,58 @@
-import * as React from 'react';
-import type { AnyObject } from '../_util/type';
-import type { DropdownProps } from '../dropdown';
-import type { BreadcrumbItemProps } from './BreadcrumbItem';
-export interface BreadcrumbItemType {
-    key?: React.Key;
-    /**
-     * Different with `path`. Directly set the link of this item.
-     */
-    href?: string;
-    /**
-     * Different with `href`. It will concat all prev `path` to the current one.
-     */
-    path?: string;
-    title?: React.ReactNode;
-    /** @deprecated Please use `title` instead */
-    breadcrumbName?: string;
-    menu?: BreadcrumbItemProps['menu'];
-    /** @deprecated Please use `menu` instead */
-    overlay?: React.ReactNode;
-    className?: string;
-    dropdownProps?: DropdownProps;
-    onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLSpanElement>;
-    /** @deprecated Please use `menu` instead */
-    children?: Omit<BreadcrumbItemType, 'children'>[];
-}
-export interface BreadcrumbSeparatorType {
-    type: 'separator';
-    separator?: React.ReactNode;
-}
-export type ItemType = Partial<BreadcrumbItemType & BreadcrumbSeparatorType>;
-export type InternalRouteType = Partial<BreadcrumbItemType & BreadcrumbSeparatorType>;
-export interface BreadcrumbProps<T extends AnyObject = AnyObject> {
-    prefixCls?: string;
-    params?: T;
-    separator?: React.ReactNode;
-    style?: React.CSSProperties;
-    className?: string;
-    rootClassName?: string;
-    children?: React.ReactNode;
-    /** @deprecated Please use `items` instead */
-    routes?: ItemType[];
-    items?: ItemType[];
-    itemRender?: (route: ItemType, params: T, routes: ItemType[], paths: string[]) => React.ReactNode;
-}
-declare const Clientlayout : {
-    <T extends AnyObject = AnyObject>(props: BreadcrumbProps<T>): React.ReactElement<unknown, string | React.JSXElementConstructor<any>>;
-    Item: React.FC<BreadcrumbItemProps> & {
-        __ANT_BREADCRUMB_ITEM: boolean;
-    };
-    Separator: React.FC<{
-        children?: React.ReactNode | undefined;
-    }> & {
-        __ANT_BREADCRUMB_SEPARATOR: boolean;
-    };
-    displayName: string;
+import { Layout, Menu, theme, Typography } from 'antd';
+import { Outlet, Link } from 'react-router-dom';
+import { UserOutlined, InfoCircleOutlined } from '@ant-design/icons';
+
+const { Header, Content, Footer } = Layout;
+const { Title } = Typography;
+
+const ClientLayout = () => {
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
+
+  return (
+    <Layout style={{ minHeight: '100vh' }}>
+      <Header style={{ background: '#fff', padding: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', padding: '0 24px' }}>
+          <Title level={4} style={{ margin: '16px 24px 16px 0', flexShrink: 0 }}>
+            Client Portal
+          </Title>
+          <Menu
+            mode="horizontal"
+            defaultSelectedKeys={['1']}
+            style={{ flex: 1, minWidth: 0 }}
+            items={[
+              {
+                key: '1',
+                icon: <UserOutlined />,
+                label: <Link to="/client">Dashboard</Link>,
+              },
+              {
+                key: '2',
+                icon: <InfoCircleOutlined />,
+                label: <Link to="/client/about">About</Link>,
+              },
+            ]}
+          />
+        </div>
+      </Header>
+      <Content style={{ padding: '24px 48px' }}>
+        <div
+          style={{
+            padding: 24,
+            minHeight: 380,
+            background: colorBgContainer,
+            borderRadius: borderRadiusLG,
+          }}
+        >
+          <Outlet />
+        </div>
+      </Content>
+      <Footer style={{ textAlign: 'center' }}>
+        Client Portal ©{new Date().getFullYear()}
+      </Footer>
+    </Layout>
+  );
 };
-export default Clientlayout ;
+
+export default ClientLayout;
