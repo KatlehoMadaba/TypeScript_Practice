@@ -1,4 +1,5 @@
-import { Route,Routes } from "react-router"
+import { Route,Routes } from "react-router-dom";
+import ReactDOM from "react-dom";
 import Login from "./pages/login/login"
 import ClientLayout from "./layouts/client"
 import AdminLayout from "./layouts/admin"
