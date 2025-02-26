@@ -1,12 +1,9 @@
-
-import './App.css'
-
+import { Route,Routes } from "react-router"
+import Login from "./pages/login/login"
 function App() {
   return (
     <>
-      <div>
-      </div>
-
+    <Login/>
     </>
   )
 }
