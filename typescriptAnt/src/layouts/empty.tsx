@@ -1,8 +1,8 @@
-import { Layout, Menu, theme } from 'antd';
-import { Outlet, Link } from 'react-router-dom';
-import { HomeOutlined, UserOutlined } from '@ant-design/icons';
+import { Layout, theme } from 'antd';
+import { Outlet} from 'react-router-dom';
 
-const { Header, Content, Footer } = Layout;
+
+const { Content, Footer } = Layout;
 
 const EmptyLayout = () => {
   const {
@@ -11,30 +11,6 @@ const EmptyLayout = () => {
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Header style={{ background: '#fff', padding: 0 }}>
-        <Menu
-          mode="horizontal"
-          defaultSelectedKeys={['1']}
-          style={{ justifyContent: 'center' }}
-          items={[
-            {
-              key: '1',
-              icon: <HomeOutlined />,
-              label: <Link to="/">Home</Link>,
-            },
-            {
-              key: '2',
-              icon: <UserOutlined />,
-              label: <Link to="/admin">Admin Portal</Link>,
-            },
-            {
-              key: '3',
-              icon: <UserOutlined />,
-              label: <Link to="/client">Client Portal</Link>,
-            },
-          ]}
-        />
-      </Header>
       <Content style={{ padding: '48px 24px' }}>
         <div
           style={{
