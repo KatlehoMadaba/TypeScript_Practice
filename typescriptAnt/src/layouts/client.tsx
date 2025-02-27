@@ -25,7 +25,7 @@ const ClientLayout = () => {
               {
                 key: '1',
                 icon: <UserOutlined />,
-                label: <Link to="/client">Dashboard</Link>,
+                label: <Link to="dashboard">Dashboard</Link>,
               },
               {
                 key: '2',

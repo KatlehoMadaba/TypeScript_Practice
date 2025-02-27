@@ -7,13 +7,14 @@ import EmptyLayout from "./layouts/empty"
 import AboutPage from "./pages/about/about"
 import HomePage from "./pages/home/home"
 import withAuth from "./hoc/withAuth";
+import Dashboard from "./pages/dashboard/dashboard";
 //Wrapped components with auth 
 const HomeProtected =withAuth(HomePage,{allowedRoles:['admin']})
 const AboutProtected =withAuth(AboutPage,{allowedRoles:['client']})
-
 //Protected layouts 
 const AdminLayoutProtected=withAuth(AdminLayout,{allowedRoles:['admin']});
 const ClientLayoutProtect=withAuth(ClientLayout,{allowedRoles:['client']});
+// const DashboardProtected=withAuth(Dashboard,{allowedRoles})
 function App() {
   return (
     <Routes>
@@ -29,12 +30,14 @@ function App() {
         {/* This is the default or the index when you land in the admin portal */}
         <Route index element={<HomeProtected/>}/>
         {/* this where you will put the other pages that require the admin layout */}
-        <Route path="home"element={<HomeProtected/>}/>
+        <Route path="dashboard" element={<Dashboard/>}/>
+
       </Route>
       {/* Protect Client Routes */}
       <Route path="/client" element={<ClientLayoutProtect/>}>
       <Route index element={<AboutProtected/>}/>
-      <Route  path="about"element={<AboutPage/>}/>
+      <Route path="about"element={<AboutPage/>}/>
+      <Route path="dashboard" element={<Dashboard/>}/>
       </Route>
     </Routes>
   )

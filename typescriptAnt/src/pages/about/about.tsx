@@ -6,7 +6,7 @@ const AboutPage = () => {
       <Typography>
         <Title level={2}>The about Overview</Title>
         <Paragraph>
-          Welcome to your adminPage. Here's what's happening today.
+          Welcome to your about view Page. Here's what's happening today.
         </Paragraph>
       </Typography>
 
