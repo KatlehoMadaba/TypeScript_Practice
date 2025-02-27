@@ -10,8 +10,6 @@ type FieldType = {
   remember?: string;
 };
 
-
-
 const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
