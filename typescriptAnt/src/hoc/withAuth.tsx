@@ -5,7 +5,7 @@ interface PropsWithAuth {
     allowedRoles?:string[]
 }
 
-const withAuth = () => {
+const withAuth = (WrappedComponent:React.ComponentType,{allowedRoles=[]}:PropsWithAuth) => {
   return (props:any)=>{
         //get the auth token from the local storage
         const token =localStorage.getItem('auth_token');
@@ -16,13 +16,17 @@ const withAuth = () => {
         //the user form navigating  back to current page using the broswer back button protection from unauth access
         return <Navigate to="/login" replace/>
     }
-    if(allowedRoles.length > 0 && !allowedRoles.includes.includes(userRole || '') ){
+    //if the allowedRole array has values inside and the array doesnt not include a userRole or is empty then you check whether the userRole
+    //is admin or client 
+    //So if the the allowedRoles is populated and does not include there userRole exits or is empty.
+    if(allowedRoles.length > 0 && !allowedRoles.includes(userRole || '') ){
         if (userRole === 'admin') {
             return <Navigate to="/admin" replace />;
           }
           return <Navigate to="/client" replace />;
         }
-    
+        //If authentication and authorization checks pass, it renders the WrappedComponent with all its props.
+        //WrappedComponent is a prop for the Component going to be based at App.jsx
         return <WrappedComponent {...props} />;
     }
    
