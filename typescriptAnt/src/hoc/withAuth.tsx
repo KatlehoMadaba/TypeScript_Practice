@@ -18,7 +18,7 @@ const withAuth = (WrappedComponent:React.ComponentType,{allowedRoles=[]}:PropsWi
     }
     //if the allowedRole array has values inside and the array doesnt not include a userRole or is empty then you check whether the userRole
     //is admin or client 
-    //So if the the allowedRoles is populated and does not include there userRole exits or is empty.
+    //So if the the allowedRoles is populated and does not include the userRole exits or is empty.
     if(allowedRoles.length > 0 && !allowedRoles.includes(userRole || '') ){
         if (userRole === 'admin') {
             return <Navigate to="/admin" replace />;
