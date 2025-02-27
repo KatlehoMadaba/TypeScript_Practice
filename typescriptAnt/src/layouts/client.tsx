@@ -30,7 +30,7 @@ const ClientLayout = () => {
               {
                 key: '2',
                 icon: <InfoCircleOutlined />,
-                label: <Link to="/client/about">About</Link>,
+                label: <Link to="about">About</Link>,
               },
             ]}
           />

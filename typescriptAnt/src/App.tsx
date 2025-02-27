@@ -28,15 +28,17 @@ function App() {
       {/* Protected Admin Routes */}
       <Route path="/admin" element={<AdminLayoutProtected/>}>
         {/* This is the default or the index when you land in the admin portal */}
-        <Route index element={<HomeProtected/>}/>
+        <Route index element={<Dashboard/>}/>
         {/* this where you will put the other pages that require the admin layout */}
         <Route path="dashboard" element={<Dashboard/>}/>
+        <Route path="about"element={<AboutProtected/>}/>
+        <Route path="home" element={<HomeProtected/>}/>
 
       </Route>
       {/* Protect Client Routes */}
       <Route path="/client" element={<ClientLayoutProtect/>}>
-      <Route index element={<AboutProtected/>}/>
-      <Route path="about"element={<AboutPage/>}/>
+      <Route index element={<Dashboard/>}/>
+      <Route path="about"element={<AboutProtected/>}/>
       <Route path="dashboard" element={<Dashboard/>}/>
       </Route>
     </Routes>
