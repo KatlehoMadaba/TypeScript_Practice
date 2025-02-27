@@ -33,6 +33,7 @@ const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
     }
     // console.log('Success:', values);
   };
+  return(
 <Cards>
   <Form
     name="basic"
@@ -73,6 +74,7 @@ const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
     </Form.Item>
   </Form>
     </Cards>
+  );
 };
 
 export default Login;
