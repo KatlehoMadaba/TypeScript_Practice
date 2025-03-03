@@ -1,7 +1,6 @@
 
 import type { FormProps } from 'antd';
-import { Button, Checkbox, Form, Input, message } from 'antd';
-import Cards from '../../components/Cards'
+import {Card,Button, Checkbox, Form, Input, message } from 'antd';
 import { useNavigate } from 'react-router';
 
 type FieldType = {
@@ -34,7 +33,15 @@ const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
     // console.log('Success:', values);
   };
   return(
-<Cards>
+    <div style={{
+      display:'flex',
+      justifyContent:'center',
+      alignItems:'center',
+      minHeight:'100vh',
+      background:'#f0f2f5'
+    }}
+    >
+<Card style={{width:400,padding:'24px'}}>
   <Form
     name="basic"
     labelCol={{ span: 8 }}
@@ -73,7 +80,9 @@ const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
       </Button>
     </Form.Item>
   </Form>
-    </Cards>
+    </Card>
+    </div>
+
   );
 };
 

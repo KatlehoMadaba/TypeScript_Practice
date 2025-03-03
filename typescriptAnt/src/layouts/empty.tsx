@@ -1,7 +1,7 @@
-import { Layout, theme } from 'antd';
+
+import { Layout,theme} from 'antd';
 import { Outlet} from 'react-router-dom';
-
-
+// const { Title, Paragraph } = Typography;
 const { Content, Footer } = Layout;
 
 const EmptyLayout = () => {

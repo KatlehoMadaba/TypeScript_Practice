@@ -8,6 +8,10 @@ import AboutPage from "./pages/about/about"
 import HomePage from "./pages/home/home"
 import withAuth from "./hoc/withAuth";
 import Dashboard from "./pages/dashboard/dashboard";
+import SplashPage from "./pages/splash/splash";
+import SignupPage from "./pages/sign-up/sign-up";
+import { ThemeProvider } from "./providers/ThemeProvider";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 //Wrapped components with auth 
 const HomeProtected =withAuth(HomePage,{allowedRoles:['admin']})
 const AboutProtected =withAuth(AboutPage,{allowedRoles:['client']})
@@ -17,13 +21,16 @@ const ClientLayoutProtect=withAuth(ClientLayout,{allowedRoles:['client']});
 // const DashboardProtected=withAuth(Dashboard,{allowedRoles})
 function App() {
   return (
+      <ThemeProvider>
+    <ThemeSwitcher />
     <Routes>
       {/* Public Routes */}
       {/* The public routes are netsted inside the EmptyLayout Route  */}
       <Route path="/" element={<EmptyLayout/>}>
-      {/* I dont think i understand why there is two routes for login */}
-        <Route index element={<Login />}/>
+        <Route index element={<SplashPage/>}/>
+        <Route path="splash" element={<SplashPage/>}/>
         <Route path="login" element={<Login />}/>
+        <Route path="sign-up" element={<SignupPage/>}/>
       </Route>
       {/* Protected Admin Routes */}
       <Route path="/admin" element={<AdminLayoutProtected/>}>
@@ -42,6 +49,8 @@ function App() {
       <Route path="dashboard" element={<Dashboard/>}/>
       </Route>
     </Routes>
+  </ThemeProvider>
+
   )
 }
 
