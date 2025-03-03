@@ -10,8 +10,7 @@ import withAuth from "./hoc/withAuth";
 import Dashboard from "./pages/dashboard/dashboard";
 import SplashPage from "./pages/splash/splash";
 import SignupPage from "./pages/sign-up/sign-up";
-import { ThemeProvider } from "./providers/ThemeProvider";
-import ThemeSwitcher from "./components/ThemeSwitcher";
+import { ThemeProvider } from "./providers/index";
 //Wrapped components with auth 
 const HomeProtected =withAuth(HomePage,{allowedRoles:['admin']})
 const AboutProtected =withAuth(AboutPage,{allowedRoles:['client']})
@@ -21,8 +20,7 @@ const ClientLayoutProtect=withAuth(ClientLayout,{allowedRoles:['client']});
 // const DashboardProtected=withAuth(Dashboard,{allowedRoles})
 function App() {
   return (
-      <ThemeProvider>
-    <ThemeSwitcher />
+    <ThemeProvider>
     <Routes>
       {/* Public Routes */}
       {/* The public routes are netsted inside the EmptyLayout Route  */}

@@ -1,11 +1,9 @@
-import {useContext,useMemo,useReducer,ReactNode} from "react";
+import {useContext,useMemo,useReducer} from "react";
 import { ThemeActionContext,ThemeStateContext } from "./context";
 import { themeReducer } from "./reducer";
 import { setThemeAction } from "./actions";
+import {ThemeProviderProps} from "./context"
 
-interface ThemeProviderProps{
-    children:ReactNode;
-}
 
 export const ThemeProvider:React.FC<ThemeProviderProps>=({children})=>{
 

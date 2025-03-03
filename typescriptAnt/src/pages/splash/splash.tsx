@@ -1,4 +1,5 @@
 import { Layout, Typography, Button, Row, Col, Card } from 'antd';
+import NavBtn from '../../components/NavBtn';
 const { Header, Content, Footer } = Layout;
 const { Title, Paragraph } = Typography;
 const SplashPage= () => {
@@ -7,6 +8,7 @@ const SplashPage= () => {
       {/* HEADER */}
       <Header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#001529', padding: '0 50px' }}>
         <Title level={3} style={{ color: 'white', margin: 0 }}>Libarary</Title>
+        <NavBtn/>
         <Button type="primary" size="large">Get Started</Button>
       </Header>
       {/* HERO SECTION */}
