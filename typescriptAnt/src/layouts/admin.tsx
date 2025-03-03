@@ -11,7 +11,7 @@ const AdminLayout = () => {
   } = theme.useToken();
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ minHeight: '100vh', width:'100%' }}>
       <Header style={{ background: '#fff', padding: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', padding: '0 24px' }}>
           <Title level={4} style={{ margin: '16px 24px 16px 0', flexShrink: 0 }}>
