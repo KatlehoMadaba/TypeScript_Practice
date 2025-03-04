@@ -28,4 +28,8 @@ export const THEME_COLOUR_INTITAL_STATE:IThemeType={
     theme:"gray"
 }
 
-
+export interface UserContextType {
+    state: { username: string; password: string };
+    login: (newUser: { username: string; password: string }) => void;
+    logout: () => void;
+}
